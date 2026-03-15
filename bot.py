@@ -79,6 +79,14 @@ async def duck(ctx):
     image_url = get_duck_image_url()
     await ctx.send(image_url)
 
+@bot.command()
+async def animal(ctx):
+    animal_list = os.listdir("images/animal")
+    with open(f"images/animal/{random.choice(animal_list)}", "rb") as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
+
+
 
 bot.run("TOKEN")
 
